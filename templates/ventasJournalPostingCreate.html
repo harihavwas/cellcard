@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Sidebar 01</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+            <div class="p-4 pt-5">
+                <a href="../index.html" class="img logo mb-5 or"
+                    style="background-image: url(../images/cellcard.png);"></a>
+                <ul class="list-unstyled components mb-5">
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">SUN</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="#">Create</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- <div class="footer">
+                    <p>
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                        is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib.com</a>
+                        
+                    </p>
+                </div> -->
+
+            </div>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+                    </button>
+                    <h2 class="ml-4 h4">Journal Posting</h2>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+
+                </div>
+            </nav>
+
+            <!-- Search Bar -->
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col">
+                        <nav class="navbar">
+                            <div class="container-fluid">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="transactionType"
+                                        id="transactionTypeSellin" value="Sellin" checked
+                                        onchange="updateInvoiceType(); loadProductTypes();">
+                                    <label class="form-check-label" for="transactionTypeSellin">Sellin</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="transactionType"
+                                        id="transactionTypeSellout" value="Sellout"
+                                        onchange="updateInvoiceType(); loadProductTypes();">
+                                    <label class="form-check-label" for="transactionTypeSellout">Sellout</label>
+                                </div>
+
+
+                                <form class="d-flex" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="External Invoice ID"
+                                        aria-label="Search" />
+                                    <input class="form-control me-2" type="search" placeholder="Order ID/Transaction ID"
+                                        aria-label="Search" />
+                                    <button class="btn btn-warning text-white" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Form -->
+            <div class="container mt-4">
+                <form action="#" method="post">
+                    <div class="row">
+                        <div class="col-4 mb-4" style="display:none;" id="saleTypeDiv">
+                            <label for="saleTypeSelect" class="form-label">Sale Type</label>
+                            <select class="form-select" aria-label="Default select example" id="saleTypeSelect"
+                                onchange="loadProductTypes();" onclick="saveData()">
+                                <option value="Product">Product</option>
+                                <option value="Service">Service</option>
+                            </select>
+                        </div>
+                        <div class="col-4 mb-4" style="display: none;" id="customerTypeDiv">
+                            <label for="customerTypeSelect" class="form-label">Customer Type</label>
+                            <select class="form-select" aria-label="Default select example" id="customerTypeSelect"
+                                onchange="customertype(); updateInvoiceType();">
+
+                                <option value="General">General</option>
+                                <option value="Partner">Partner</option>
+                            </select>
+                        </div>
+                        <div class="col-4 mb-4" style="display: none;" id="serviceTypeDiv">
+                            <label for="serviceTypeSelect" class="form-label">Service Type</label>
+                            <select class="form-select" aria-label="Default select example" id="serviceTypeSelect"
+                                onchange="updateInvoiceType()">
+                                <option value="Prepaid">Prepaid</option>
+                                <option value="nonPrepaid">Postpaid/Corporate/Suppliers</option>
+                            </select>
+                        </div>
+                        <div class="col-4 mb-4" style="display: none;" id="commercialChannelDiv">
+                            <label for="commercialTypeSelect" class="form-label">Commercial Channel</label>
+                            <select class="form-select" aria-label="Default select example" id="commercialTypeSelect"
+                                onchange="levelOptions(); updateInvoiceType()">
+                                <option value="distributionChannel">Distribution Channel</option>
+                                <option value="alternativeChannel">Alternative Channel</option>
+                            </select>
+                        </div>
+                        <div class="col-4 mb-4" style="display: none;" id="levelDiv">
+                            <label for="levelSelect" class="form-label">Level</label>
+                            <select class="form-select" aria-label="Default select example" id="levelSelect"
+                                onchange="updatePartnerList(); updateInvoiceType()">
+                                <option value="reseller">Reseller</option>
+                                <option value="bankingPartner">Banking Partner</option>
+                                <option value="onlinePartner">Online Partner</option>
+                                <option value="convenientStore">Convenient Store</option>
+                            </select>
+                        </div>
+                        <div class="col-4 mb-4" style="display: none;" id="partnerDiv">
+                            <label for="partnerSelect" class="form-label">Partner</label>
+                            <select class="form-select" aria-label="Default select example" id="partnerSelect">
+                                <option value="1111">1111 | Partner A</option>
+                                <option value="2222">2222 | Partner B</option>
+                                <option value="3333">3333 | Partner C</option>
+                                <option value="4444">4444 | Partner D</option>
+                                <option value="5555">5555 | Partner E</option>
+                                <option value="6666">6666 | Partner F</option>
+                            </select>
+                        </div>
+                        <div class="col-4 mb-4" id="invoiceTypeDiv">
+                            <label for="invoiceTypeSelect" class="form-label">Invoice Type</label>
+                            <select class="form-select" aria-label="Default select example" id="invoiceTypeSelect"
+                                onchange="updatePartnerList()" disabled>
+                                <option value="bankingPartner">Tax</option>
+                                <option value="onlinePartner">Commercial</option>
+                            </select>
+                        </div>
+                        <div class="col-4 mb-4" id="storeDiv">
+                            <label for="storeSelect" class="form-label">Store</label>
+                            <select class="form-select" aria-label="Default select example" id="storeSelect"
+                                onchange="">
+                                <option value="HOQ">HOQ | Head Office</option>
+                            </select>
+                        </div>
+                        <div class="col-4 mb-4" id="employeeDiv">
+                            <label for="employeeSelect" class="form-label">Employee</label>
+                            <select class="form-select" aria-label="Default select example" id="employeeSelect">
+                                <option value="H017">H017 | Savoun Chhey</option>
+                                <option value="MH010">MH010 | Daroth</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="transactionReference" class="form-label">Transaction Reference</label>
+                            <input type="text" class="form-control" id="transactionReference"
+                                placeholder="eg: HOQCI25-123456">
+                        </div>
+                        <div class="col-4">
+                            <label for="transactionDate" class="form-label">Transaction Date</label>
+                            <input type="date" class="form-control" id="transactionDate" placeholder="">
+                        </div>
+                    </div>
+                    <div class="container" style="border-bottom: 1px solid #878787; padding-bottom: 10px;"></div>
+                    <!-- <button class="btn mt-4 btn-warning text-white d-flex justify-content-end" onclick="saveForm()">
+                        Next
+                    </button> -->
+                    <!-- <a href="../templates/setProductDetails.html" class="btn btn-warning text-white mt-4 " onclick="saveForm()">Next</a>
+                      -->
+                    <!-- <a href="#" class="btn btn-warning text-white mt-4" onclick="saveForm()">Next</a> -->
+
+                </form>
+            </div>
+
+            <!-- Multiple Products -->
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-4 mb-4" id="productTypeDiv">
+                        <label for="productTypeSelect" class="form-label">Product Type</label>
+                        <select class="form-select" id="productTypeSelect" onchange="loadProductsByType ();">
+                        </select>
+                    </div>
+                    <div class="col-4 mb-4" id="productDiv">
+                        <label for="productSelect" class="form-label">Product</label>
+                        <select class="form-select" id="productSelect">
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <script src="../static/script.js"></script>
+        </div>
+    </div>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

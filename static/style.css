@@ -1,0 +1,4 @@
+                    /* Minimal styles for pill toggle */
+                    .pill-wrap { display:inline-block; }
+                    .pill-wrap label { cursor:pointer; padding:6px 14px; border-radius:20px; margin-right:6px; border:1px solid #ddd; }
+                    .pill-wrap label.active { background:#ff9d00; color:#fff; border-color:#ff9d00; }
