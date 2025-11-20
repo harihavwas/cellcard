@@ -283,14 +283,15 @@ function loadProductsByType() {
 
 const productData = {
     "SIM": [
-        { "name": "Blank SIM", "itemCode": "Blank SIM", "Description": "Blank SIM", "price": 10 }
+        { "name": "Blank SIM", "itemCode": "Blank SIM", "Description": "Blank SIM", "price": 1 },
+        { "name": "USIM_JAVA", "itemCode": "USIM_JAVA", "Description": "USIM_JAVA", "price": 12 }
     ],
     "scratchCards": [
         { "name": "1$", "itemCode": "1$", "Description": "1$", "price": 1 },
         { "name": "5$", "itemCode": "5$", "Description": "5$", "price": 5 },
         { "name": "10$", "itemCode": "10$", "Description": "10$", "price": 10 }
     ],
-    "device": [
+    "devices": [
         { "name": "iPhone 15", "itemCode": "iPhone 15", "Description": "iPhone 15", "price": 15 },
         { "name": "Samsung", "itemCode": "Samsung", "Description": "Samsung", "price": 15 }
     ],
@@ -301,15 +302,50 @@ const productData = {
 
 
 function showSelectedProduct() {
+
     let selectedProduct = document.getElementById("productSelect").value;
     let productDescription = document.getElementById("productSelect").value;
+    let productType = document.getElementById("productTypeSelect").value;
+    let product = productData[productType].find(item => item.itemCode === selectedProduct);
+    let qty = parseInt(document.getElementById("quantityInput").value);
+
+    let totalAmount = product.price * qty;
+    let exclVat = totalAmount / 1.1;
+    let Vat = totalAmount / 11;
+
+
     document.getElementById("selectedProductDisplay").textContent =
         selectedProduct ? "ItemCode: " + selectedProduct : "";
     document.getElementById("productDescription").textContent =
         productDescription ? "Description: " + productDescription : "";
+    if (product) {
+        document.getElementById("productPriceDisplay").textContent =
+            "Unit Price: $" + product.price;
+        document.getElementById("productTotalPriceWithoutTaxDisplay").textContent =
+            "Total Amount (Excl. VAT): $" + exclVat.toFixed(2);
+        document.getElementById("productTotalPriceTaxDisplay").textContent =
+            "VAT (10%): $" + Vat.toFixed(2);
+        document.getElementById("subTotal").textContent =
+            "Subtotal (VAT Included): $" + totalAmount.toFixed(2);
+    }
+
 }
 
+function decreaseQty() {
+    let qty = parseInt(document.getElementById("quantityInput").value);
+    if (qty > 1) {
+        qty--;
+        document.getElementById("quantityInput").value = qty;
+    }
+    showSelectedProduct();
+}
 
+function increaseQty() {
+    let qty = parseInt(document.getElementById("quantityInput").value);
+    qty++;
+    document.getElementById("quantityInput").value = qty;
+    showSelectedProduct();
+}
 
 function isVisible(id) {
     const el = document.getElementById(id);

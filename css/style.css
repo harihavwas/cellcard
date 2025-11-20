@@ -8287,3 +8287,30 @@ a[data-toggle="collapse"] {
 
 .footer p {
   color: rgba(255, 255, 255, 0.5); }
+
+  .quantity-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    background-color: #ffc107;
+    color: white;
+    cursor: pointer;
+}
+
+#quantityInput {
+    width: 50px;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
