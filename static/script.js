@@ -11,7 +11,8 @@ window.onload = function () {
     updatePartnerList();
     loadProductsByType();
     showSelectedProduct();
-
+    applyDiscount();
+    upfrontCommission();
 };
 
 // MAIN handler for both radios
@@ -27,6 +28,7 @@ function transactionType() {
         document.getElementById("commercialChannelDiv").style.display = "none";
         document.getElementById("levelDiv").style.display = "none";
         document.getElementById("partnerDiv").style.display = "none";
+        document.getElementById("deliveryAmountDiv").style.display = "none";
 
         customertype();
     }
@@ -35,6 +37,8 @@ function transactionType() {
         document.getElementById("commercialChannelDiv").style.display = "block";
         document.getElementById("levelDiv").style.display = "block";
         document.getElementById("partnerDiv").style.display = "block";
+        document.getElementById("customerTypeDiv").style.display = "none";
+        document.getElementById("deliveryAmountDiv").style.display = "block";
         levelOptions();
 
         // Hide Sellout fields
@@ -42,6 +46,7 @@ function transactionType() {
         document.getElementById("customerTypeDiv").style.display = "none";
         document.getElementById("serviceTypeDiv").style.display = "none";
     }
+    applyDiscount();
 }
 
 
@@ -346,6 +351,61 @@ function increaseQty() {
     document.getElementById("quantityInput").value = qty;
     showSelectedProduct();
 }
+
+function applyDiscount() {
+    let commercialChannel = document.getElementById("commercialTypeSelect").value;
+    let type = document.querySelector('input[name="transactionType"]:checked').value;
+
+    if (type === "Sellout") {
+        document.getElementById("applyDiscount").style.display = "block";
+        document.getElementById("applyCommission").style.display = "none";
+    }
+    else if (type === "Sellin") {
+        if (commercialChannel === "alternativeChannel") {
+            document.getElementById("applyCommission").style.display = "block";
+            document.getElementById("applyDiscount").style.display = "none";
+        }
+        else {
+            document.getElementById("applyCommission").style.display = "none";
+            document.getElementById("applyDiscount").style.display = "none";
+        }
+    }
+}
+
+function upfrontCommission() {
+    let commercialChannel = document.getElementById("commercialTypeSelect").value;
+    let type = document.querySelector('input[name="transactionType"]:checked').value;
+
+    if (type === "Sellout") {
+        document.getElementById("upfrontCommissionTag").style.display = "none";
+    }
+    else if (type === "Sellin") {
+        if (commercialChannel === "alternativeChannel") {
+            document.getElementById("upfrontCommissionTag").style.display = "none";
+            document.getElementById("upfrontWhtTag").style.display = "none";
+        }
+        else {
+            document.getElementById("upfrontCommissionTag").style.display = "block";
+            document.getElementById("upfrontWhtTag").style.display = "block";
+        }
+    }
+}
+
+function bankAccounts() {
+    let mop = document.getElementById("modeOfPayment").value;
+
+    if (mop === "Bank Transfer") {
+        document.getElementById("bankAccountDiv").style.display = "block";
+    }
+    else {
+        document.getElementById("bankAccountDiv").style.display = "none";
+    }
+}
+
+function showlineItems() {
+    document.getElementById("lineItemsDiv").style.display = "block";
+}
+
 
 function isVisible(id) {
     const el = document.getElementById(id);

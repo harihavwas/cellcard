@@ -25,8 +25,10 @@
             <div class="p-4 pt-5">
                 <a href="../index.html" class="img logo mb-5 or"
                     style="background-image: url(../images/cellcard.png);"></a>
+                <a href="../index.html" class="text-warning">Home</a>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
+
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle">SUN</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -81,14 +83,14 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="transactionType"
                                         id="transactionTypeSellin" value="Sellin" checked
-                                        onchange="updateInvoiceType(); loadProductTypes();">
+                                        onchange="updateInvoiceType(); loadProductTypes(); applyDiscount(); upfrontCommission();">
                                     <label class="form-check-label" for="transactionTypeSellin">Sellin</label>
                                 </div>
 
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="transactionType"
                                         id="transactionTypeSellout" value="Sellout"
-                                        onchange="updateInvoiceType(); loadProductTypes(); ">
+                                        onchange="updateInvoiceType(); loadProductTypes(); applyDiscount();">
                                     <label class="form-check-label" for="transactionTypeSellout">Sellout</label>
                                 </div>
 
@@ -110,7 +112,7 @@
             <div class="container">
                 <form action="#" method="post">
                     <div class="row">
-                        <div class="mb-4 col-sm-12 col-md-6 col-lg-4" style="display:none;" id="saleTypeDiv">
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-4" style="display:none;" id="saleTypeDiv">
                             <label for="saleTypeSelect" class="form-label">Sale Type</label>
                             <select class="form-select" aria-label="Default select example" id="saleTypeSelect"
                                 onchange="loadProductTypes();" onclick="saveData()">
@@ -118,7 +120,7 @@
                                 <option value="Service">Service</option>
                             </select>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4 mt-4" style="display: none;" id="customerTypeDiv">
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-4" style="display: none;" id="customerTypeDiv">
                             <label for="customerTypeSelect" class="form-label">Customer Type</label>
                             <select class="form-select" aria-label="Default select example" id="customerTypeSelect"
                                 onchange="customertype(); updateInvoiceType();">
@@ -127,7 +129,7 @@
                                 <option value="Partner">Partner</option>
                             </select>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4 mt-4" style="display: none;" id="serviceTypeDiv">
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-4" style="display: none;" id="serviceTypeDiv">
                             <label for="serviceTypeSelect" class="form-label">Service Type</label>
                             <select class="form-select" aria-label="Default select example" id="serviceTypeSelect"
                                 onchange="updateInvoiceType()">
@@ -135,25 +137,25 @@
                                 <option value="nonPrepaid">Postpaid/Corporate/Suppliers</option>
                             </select>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4 mt-4" style="display: none;" id="commercialChannelDiv">
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-4" style="display: none;" id="commercialChannelDiv">
                             <label for="commercialTypeSelect" class="form-label">Commercial Channel</label>
                             <select class="form-select" aria-label="Default select example" id="commercialTypeSelect"
-                                onchange="levelOptions(); updateInvoiceType()">
+                                onchange="levelOptions(); updateInvoiceType(); applyDiscount(); upfrontCommission();">
                                 <option value="distributionChannel">Distribution Channel</option>
                                 <option value="alternativeChannel">Alternative Channel</option>
                             </select>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4 mt-4" style="display: none;" id="levelDiv">
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-4" style="display: none;" id="levelDiv">
                             <label for="levelSelect" class="form-label">Level</label>
                             <select class="form-select" aria-label="Default select example" id="levelSelect"
-                                onchange="updatePartnerList(); updateInvoiceType()">
+                                onchange="updatePartnerList(); updateInvoiceType(); ">
                                 <option value="reseller">Reseller</option>
                                 <option value="bankingPartner">Banking Partner</option>
                                 <option value="onlinePartner">Online Partner</option>
                                 <option value="convenientStore">Convenient Store</option>
                             </select>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4 mt-4" style="display: none;" id="partnerDiv">
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-4" style="display: none;" id="partnerDiv">
                             <label for="partnerSelect" class="form-label">Partner</label>
                             <select class="form-select" aria-label="Default select example" id="partnerSelect">
                                 <option value="1111">1111 | Partner A</option>
@@ -164,7 +166,7 @@
                                 <option value="6666">6666 | Partner F</option>
                             </select>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4 mt-4" id="invoiceTypeDiv">
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-4" id="invoiceTypeDiv">
                             <label for="invoiceTypeSelect" class="form-label">Invoice Type</label>
                             <select class="form-select" aria-label="Default select example" id="invoiceTypeSelect"
                                 onchange="updatePartnerList()" disabled>
@@ -172,26 +174,26 @@
                                 <option value="onlinePartner">Commercial</option>
                             </select>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4 mt-4" id="storeDiv">
+                        <div class="col-sm-12 col-md-6 col-lg-4" id="storeDiv">
                             <label for="storeSelect" class="form-label">Store</label>
                             <select class="form-select" aria-label="Default select example" id="storeSelect"
                                 onchange="">
                                 <option value="HOQ">HOQ | Head Office</option>
                             </select>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4 mt-4" id="employeeDiv">
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-4" id="employeeDiv">
                             <label for="employeeSelect" class="form-label">Employee</label>
                             <select class="form-select" aria-label="Default select example" id="employeeSelect">
                                 <option value="H017">H017 | Savoun Chhey</option>
                                 <option value="MH010">MH010 | Daroth</option>
                             </select>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4 mt-4">
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
                             <label for="transactionReference" class="form-label">Transaction Reference</label>
                             <input type="text" class="form-control" id="transactionReference"
                                 placeholder="eg: HOQCI25-123456">
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4 mt-4">
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
                             <label for="transactionDate" class="form-label">Transaction Date</label>
                             <input type="date" class="form-control" id="transactionDate" placeholder="">
                         </div>
@@ -210,19 +212,19 @@
             <!-- Multiple Products -->
             <div class="container mt-4">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-4 mt-4" id="productTypeDiv">
+                    <div class="col-sm-12 col-md-6 col-lg-6 mb-4" id="productTypeDiv">
                         <label for="productTypeSelect" class="form-label">Product Type</label>
                         <select class="form-select" id="productTypeSelect"
                             onchange="loadProductsByType(); showSelectedProduct();">
                         </select>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4 mt-4" id="productDiv">
-                        <label for="productSelect" class="form-label">Product</label>
+                        <label for="productSelect" class="form-label mt-4">Product</label>
                         <select class="form-select" id="productSelect" onchange="showSelectedProduct();">
                         </select>
+                        <a href="#" class="btn btn-warning text-white mt-4">Add Product</a>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4 mt-4 d-flex align-items-end">
-                        <div class="card" style="width: 18rem;">
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 mb-4">
+                        <div class="card border-warning">
                             <div class="card-body">
                                 <h5 class="card-title">Cart Summary</h5>
                                 <div class="quantity-container">
@@ -231,31 +233,242 @@
                                     <button class="qty-btn" onclick="increaseQty()">+</button>
                                 </div>
                                 <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Cart Summary</h6> -->
-                                <p id="selectedProductDisplay" class="mt-2 text-primary fw-bold"></p>
-                                <p id="productDescription" class="text-primary fw-bold"></p>
-                                <p id="productPriceDisplay" class="text-primary fw-bold"></p>
-                                <p id="productTotalPriceWithoutTaxDisplay" class="text-primary fw-bold"></p>
-                                <p id="productTotalPriceTaxDisplay" class="text-primary fw-bold"></p>
-                                <p id="subTotal" class="text-primary fw-bold font-awesome"></p>
-                                </p>
-                                <!-- <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a> -->
+                                <p id="selectedProductDisplay" class="mt-2 "></p>
+                                <p id="productDescription" class=""></p>
+                                <p id="productPriceDisplay" class=""></p>
+                                <p id="productTotalPriceWithoutTaxDisplay" class=""></p>
+                                <p id="productTotalPriceTaxDisplay" class=""></p>
+                                <p id="subTotal" class=" font-awesome"></p>
+                                <p id="upfrontCommissionTag" class=" font-awesome"
+                                    onclick="upfrontCommission();" style="display: none;">Commission: $0</p>
+                                <p id="upfrontWhtTag" class=" font-awesome"
+                                    onclick="upfrontCommission();" style="display: none;">WHT: $0</p>
+
+                                <a href="#" class="card-link" style="display: none;" id="applyDiscount"
+                                    data-bs-toggle="modal" data-bs-target="#discountModal"
+                                    onclick="applyDiscount()">Apply Discount</a>
+
+                                <a href="#" class="card-link" style="display: none;" id="applyCommission"
+                                    data-bs-toggle="modal" data-bs-target="#commissionModal"
+                                    onclick="applyDiscount()">Apply Commission</a>
                             </div>
                         </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4"></div>
+                        </div>
+                    </div>
+
+                    <!-- DiscountModal -->
+                    <div class="modal fade" id="discountModal" tabindex="-1" aria-labelledby="discountModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="discountModalLabel">Apply Discount</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-4">
+                                        <label for="discountType" class="form-label">Discount Type</label>
+                                        <select class="form-select" aria-label="Default select example"
+                                            id="discountType">
+                                            <option value="Percentage">Percentage</option>
+                                            <option value="Fixed">Fixed</option>
+                                            <option value="FOC">FOC</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="discountValue" class="form-label">Value
+                                        </label>
+                                        <input type="text" class="form-control" id="discountValue" placeholder="10">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" data-bs-dismiss="modal" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Commission Modal -->
+                    <div class="modal fade" id="commissionModal" tabindex="-1" aria-labelledby="commissionModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="commissionModalLabel">Apply Commission</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-4">
+                                        <label for="commissionInvoiceType" class="form-label">Invoice Type</label>
+                                        <select class="form-select" aria-label="Default select example"
+                                            id="commissionInvoiceType">
+                                            <option value="TAX">Tax</option>
+                                            <option value="Commercial">Commercial</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="commissionVatType" class="form-label">VAT</label>
+                                        <select class="form-select" aria-label="Default select example"
+                                            id="commissionVatType">
+                                            <option value="10%">10%</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="commissionWhtType" class="form-label">WHT</label>
+                                        <select class="form-select" aria-label="Default select example"
+                                            id="commissionWhtType">
+                                            <option value="10%">15%</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="container" style="border-bottom: 1px solid #878787; padding-bottom: 10px;"></div>
+            </div>
+
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div style="display: none;" id="deliveryAmountDiv" class="">
+                            <label for="deliveryValue" class="form-label">Delivery Amount
+                            </label>
+                            <input type="text" class="form-control" id="deliveryValue" placeholder="$10">
+                        </div>
+
+                        <div onchange="bankAccounts();">
+                            <label for="modeOfPayment" class="form-label mt-4">Payment Method</label>
+                            <select class="form-select" aria-label="Default select example" id="modeOfPayment">
+                                <option value="Cash">Cash</option>
+                                <option value="Credit">Credit</option>
+                                <option value="Bank Transfer">Bank Transfer</option>
+                            </select>
+                        </div>
+
+                        <div style="display: none;" id="bankAccountDiv">
+                            <label for="bankAccount" class="form-label mt-4">Bank Account</label>
+                            <select class="form-select" aria-label="Default select example" id="bankAccount">
+                                <option value="TAX">123456</option>
+                                <option value="Commercial">67890</option>
+                            </select>
+                        </div>
+
+                        <button type="button" class="btn btn-outline-secondary mt-4">View Json</button>
+                        <button type="button" class="btn btn-outline-primary mt-4" onclick="showlineItems();">Validate</button>
+                        <button type="button" class="btn btn-outline-warning mt-4">Submit</button>
+
+                    </div>
+                    <div class="col-6">
+                        <div class="card border-warning mb-3">
+                            <!-- <div class="card-header">Su</div> -->
+                            <div class="card-body">
+                                <h5 class="card-title">Order Summary</h5>
+                                <p>Total amount: $1</p>
+                                <p>Discount: $0</p>
+                                <p>Commission: $5</p>
+                                <p>VAT: 10</p>
+                                <p>WHT: $1</p>
+                                <p>Net Commission: $5</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="display: none;" id="lineItemsDiv">
+                <div class="row ">
+                    <div class="col-12">
+                        <table class="table table-bordered table-striped table table-responsive"
+                            style="height: 80vh; overflow-y: auto;">
+                            <thead>
+                                <tr>
+                                    <th>Account Code</th>
+                                    <th>Accounting Period</th>
+                                    <th>Transaction Date</th>
+                                    <th>Transaction Reference</th>
+                                    <th>Description</th>
+                                    <th>Journal Type</th>
+                                    <th>Currency Code</th>
+                                    <th>Debit/Credit</th>
+                                    <th>Transaction Amount</th>
+                                    <th>Analysis Code 1</th>
+                                    <th>Analysis Code 2</th>
+                                    <th>Analysis Code 3</th>
+                                    <th>Analysis Code 4</th>
+                                    <th>Analysis Code 5</th>
+                                    <th>Analysis Code 6</th>
+                                    <th>Analysis Code 7</th>
+                                    <th>Analysis Code 8</th>
+                                    <th>Analysis Code 9</th>
+                                    <th>Analysis Code 10</th>
+                                    <th>General Description 1</th>
+                                    <th>General Description 2</th>
+                                    <th>General Description 3</th>
+                                    <th>General Description 4</th>
+                                    <th>General Description 5</th>
+                                    <th>General Description 6</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2400100002</td>
+                                    <td>0112025</td>
+                                    <td>17112025</td>
+                                    <td>HOQCI25-123456</td>
+                                    <td>10$CELLCARDSINGLE</td>
+                                    <td>CCR</td>
+                                    <td>USD</td>
+                                    <td>C/D</td>
+                                    <td>$9,090.91</td>
+                                    <td>NA</td>
+                                    <td>HOQ</td>
+                                    <td>VAT10C</td>
+                                    <td>C001</td>
+                                    <td>SM001</td>
+                                    <td>1053</td>
+                                    <td>H071</td>
+                                    <td>P_CUS1012</td>
+                                    <td>1</td>
+                                    <td>NA</td>
+                                    <td>HOQCI25-123456</td>
+                                    <td>Cash</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                     </div>
                 </div>
             </div>
 
-
-            <script src="../static/script.js"></script>
         </div>
-    </div>
-
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/popper.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/main.js"></script>
+        <script src="../static/script.js"></script>
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/popper.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/main.js"></script>
 </body>
 
 </html>
