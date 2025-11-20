@@ -174,7 +174,7 @@
                                 <option value="onlinePartner">Commercial</option>
                             </select>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4" id="storeDiv">
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-4" id="storeDiv">
                             <label for="storeSelect" class="form-label">Store</label>
                             <select class="form-select" aria-label="Default select example" id="storeSelect"
                                 onchange="">
@@ -239,10 +239,10 @@
                                 <p id="productTotalPriceWithoutTaxDisplay" class=""></p>
                                 <p id="productTotalPriceTaxDisplay" class=""></p>
                                 <p id="subTotal" class=" font-awesome"></p>
-                                <p id="upfrontCommissionTag" class=" font-awesome"
-                                    onclick="upfrontCommission();" style="display: none;">Commission: $0</p>
-                                <p id="upfrontWhtTag" class=" font-awesome"
-                                    onclick="upfrontCommission();" style="display: none;">WHT: $0</p>
+                                <p id="upfrontCommissionTag" class=" font-awesome" onclick="upfrontCommission();"
+                                    style="display: none;">Commission: $0</p>
+                                <p id="upfrontWhtTag" class=" font-awesome" onclick="upfrontCommission();"
+                                    style="display: none;">WHT: $0</p>
 
                                 <a href="#" class="card-link" style="display: none;" id="applyDiscount"
                                     data-bs-toggle="modal" data-bs-target="#discountModal"
@@ -371,12 +371,16 @@
                             </select>
                         </div>
 
-                        <button type="button" class="btn btn-outline-secondary mt-4">View Json</button>
-                        <button type="button" class="btn btn-outline-primary mt-4" onclick="showlineItems();">Validate</button>
-                        <button type="button" class="btn btn-outline-warning mt-4">Submit</button>
+                        <div>
+                            <button type="button" class="btn btn-outline-secondary mt-4 me-3">View Json</button>
+                            <button type="button" class="btn btn-outline-primary mt-4 me-3" onclick="showlineItems();">Validate</button>
+                            <button type="button" class="btn btn-outline-warning mt-4">Submit</button>
+                        </div>
+
+
 
                     </div>
-                    <div class="col-6">
+                    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
                         <div class="card border-warning mb-3">
                             <!-- <div class="card-header">Su</div> -->
                             <div class="card-body">
