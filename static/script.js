@@ -8,7 +8,9 @@ window.onload = function () {
     transactionType(); // apply default Sellin UI
     updateInvoiceType();
     loadProductTypes();
-    // loadProductsByType();
+    updatePartnerList();
+    loadProductsByType();
+    showSelectedProduct();
 
 };
 
@@ -83,8 +85,6 @@ function levelOptions() {
     }
 }
 
-
-// 🔥 Update partner list based on selected LEVEL
 function updatePartnerList() {
     let levelSelectValue = document.getElementById("levelSelect").value;
     let partnerSelect = document.getElementById("partnerSelect");
@@ -258,8 +258,8 @@ function loadProductsByType() {
 
     if (selectedType === "SIM") {
         productDropdown.innerHTML = `
-                <option value="BlankSIM">Blank SIM</option>
-                <option value="USIMJAVA">USIM_JAVA</option>            `;
+                <option value="Blank SIM">Blank SIM</option>
+                <option value="USIM_JAVA">USIM_JAVA</option>            `;
         return;
     }
 
@@ -280,6 +280,34 @@ function loadProductsByType() {
     }
 }
 
+
+const productData = {
+    "SIM": [
+        { "name": "Blank SIM", "itemCode": "Blank SIM", "Description": "Blank SIM", "price": 10 }
+    ],
+    "scratchCards": [
+        { "name": "1$", "itemCode": "1$", "Description": "1$", "price": 1 },
+        { "name": "5$", "itemCode": "5$", "Description": "5$", "price": 5 },
+        { "name": "10$", "itemCode": "10$", "Description": "10$", "price": 10 }
+    ],
+    "device": [
+        { "name": "iPhone 15", "itemCode": "iPhone 15", "Description": "iPhone 15", "price": 15 },
+        { "name": "Samsung", "itemCode": "Samsung", "Description": "Samsung", "price": 15 }
+    ],
+    "services": [
+        { "name": "Service", "itemCode": "Service", "Description": "Service", "price": 20 }
+    ]
+};
+
+
+function showSelectedProduct() {
+    let selectedProduct = document.getElementById("productSelect").value;
+    let productDescription = document.getElementById("productSelect").value;
+    document.getElementById("selectedProductDisplay").textContent =
+        selectedProduct ? "ItemCode: " + selectedProduct : "";
+    document.getElementById("productDescription").textContent =
+        productDescription ? "Description: " + productDescription : "";
+}
 
 
 

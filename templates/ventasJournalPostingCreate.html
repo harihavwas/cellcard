@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Sidebar 01</title>
+    <title>Cellcard</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -217,8 +217,21 @@
                     </div>
                     <div class="col-4 mb-4" id="productDiv">
                         <label for="productSelect" class="form-label">Product</label>
-                        <select class="form-select" id="productSelect">
+                        <select class="form-select" id="productSelect" onchange="showSelectedProduct();">
                         </select>
+                    </div>
+                    <div class="col-4">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Cart Summary</h5>
+                                <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Cart Summary</h6> -->
+                                <p id="selectedProductDisplay" class="mt-2 text-primary"></p>
+                                <p id="productDescription" class="text-primary"></p>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
