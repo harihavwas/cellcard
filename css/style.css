@@ -8288,7 +8288,7 @@ a[data-toggle="collapse"] {
 .footer p {
   color: rgba(255, 255, 255, 0.5); }
 
-  .quantity-container {
+.quantity-container {
     display: flex;
     align-items: center;
     gap: 10px;
